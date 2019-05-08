@@ -1,0 +1,17 @@
+# Source control
+/*.svn
+
+# SBT
+/.cache
+/target
+/project/project
+/project/target
+
+# Eclipse
+/.settings
+/.project
+/.classpath
+
+# Intellij
+/.worksheet
+/.idea

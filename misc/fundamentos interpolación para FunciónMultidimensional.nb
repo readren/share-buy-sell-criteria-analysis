@@ -1,0 +1,296 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      6609,        217]*)
+(*NotebookOutlinePosition[      7258,        239]*)
+(*  CellTagsIndexPosition[      7214,        235]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[{
+  "Sean ",
+  StyleBox["A",
+    FontWeight->"Bold"],
+  ", ",
+  StyleBox["B",
+    FontWeight->"Bold"],
+  ", ",
+  StyleBox["C",
+    FontWeight->"Bold"],
+  " y ",
+  StyleBox["D",
+    FontWeight->"Bold"],
+  " puntos que proyectados en el plano {x=?, y=?, z=0} forman un \
+rect\[AAcute]ngulo con vertices A', B', C' y D', donde los segmento A'B' y \
+D'C' son paralelos al eje y, y A'C' y B'D' son paralelos al eje x\nSean ",
+  StyleBox["a",
+    FontWeight->"Bold",
+    FontSlant->"Italic"],
+  ", ",
+  StyleBox["b",
+    FontWeight->"Bold",
+    FontSlant->"Italic"],
+  ", ",
+  StyleBox["c",
+    FontWeight->"Bold",
+    FontSlant->"Italic"],
+  " y ",
+  StyleBox["d",
+    FontWeight->"Bold",
+    FontSlant->"Italic"],
+  " las componente en el eje z (la altura) de A, B, C, y D respectivamente\n\
+Sea G un punto en el segmento BA, g la altura de G, y t la longitud de la \
+proyeccion del segmento BG sobre el plano {x=?, y=?, z=0}\nSea H el punto del \
+segmento DC, tal que la proyeccion del segmento DH es igual a t, y sea h la \
+altura de H, y h la altura de H.\nSea E un punto en el segmento BD, e la \
+altura de E, y s la longitud de la proyeccion del segmento BD sobre el plano \
+{x=?, y=?, z=0}\nSea F el punto del segmento AC, tal que la proyeccion del \
+segmento AC es igual a s, y sea f la altura de F, y h la altura de H.\nLa \
+pregujta es: se tocan los sementos EF y GH? \nSea X el punto donde se cortan \
+las proyecciones de EF y GH, si los segmentos se tocan entonces la altura del \
+punto en EF que esta sobre X debe ser la misma a la altura del punto en GH \
+que esta sobre X."
+}], "Text"],
+
+Cell["\<\
+{x\[Equal]e+(-e+f) t,e\[Equal]b+(-b+d) s,f\[Equal]a+(-a+c) s}\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(equs1\  = \ {x \[Equal] e + \((f - e)\)*t, \ 
+        e \[Equal] b + \((d - b)\)*s, \ 
+        f \[Equal] a + \((c - a)\)*s}\)\(\[IndentingNewLine]\)
+    \)\)], "Input"],
+
+Cell[BoxData[
+    \({x \[Equal] e + \((\(-e\) + f)\)\ t, 
+      e \[Equal] b + \((\(-b\) + d)\)\ s, 
+      f \[Equal] a + \((\(-a\) + c)\)\ s}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol1 = Solve[equs1, {x, e, f}]\  // \ Simplify\)], "Input"],
+
+Cell[BoxData[
+    \({{x \[Rule] \((b\ \((\(-1\) + s)\) - d\ s)\)\ \((\(-1\) + t)\) + \((a - 
+                  a\ s + c\ s)\)\ t, f \[Rule] a - a\ s + c\ s, 
+        e \[Rule] b - b\ s + d\ s}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(equs2\  = \ {\ x \[Equal] g + \((h - g)\)*s, 
+        g \[Equal] b + \((a - b)\)*t, \ 
+        h \[Equal] d + \((c - d)\)*t}\)], "Input"],
+
+Cell[BoxData[
+    \({x \[Equal] g + \((\(-g\) + h)\)\ s, g \[Equal] b + \((a - b)\)\ t, 
+      h \[Equal] d + \((c - d)\)\ t}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol2 = Solve[equs2, {x, g, h}]\  // \ Simplify\)], "Input"],
+
+Cell[BoxData[
+    \({{x \[Rule] \((\(-1\) + s)\)\ \((b\ \((\(-1\) + t)\) - a\ t)\) + 
+            s\ \((d + c\ t - d\ t)\), h \[Rule] d + c\ t - d\ t, 
+        g \[Rule] b + a\ t - b\ t}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\((x /. \ sol1\ )\) - \((x\  /. \ sol2)\)\ \  // \ Simplify\)], "Input"],
+
+Cell[BoxData[
+    \({0}\)], "Output"]
+}, Open  ]],
+
+Cell["\<\
+Como di\[OAcute] cero la diferencia entre las dos alturas, se concluye que \
+los segmentos EF y GH se tocan en un punto R
+
+Lo siguiente es una manera que se me ocurri\[OAcute] de expresar la altura \
+del punto R de la cual se pueda inducir como ser\[IAcute]a la \
+expresi\[OAcute]n para otras dimensiones del espacio.  (esto se hizo todo en \
+un espacio de 3 dimensiones), y la verificaci\[OAcute]n de que esta bien \
+(mirando si la latura de R da igual que en los dos casos anteriores)\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(equs3\  = \ 
+      x\  \[Rule] \ 
+        b*\((1 - s)\)*\((1 - t)\) + a*\((1 - s)\)*t + d*s*\((1 - t)\) + 
+          c*s*t\)], "Input"],
+
+Cell[BoxData[
+    \(x \[Rule] 
+      b\ \((1 - s)\)\ \((1 - t)\) + d\ s\ \((1 - t)\) + a\ \((1 - s)\)\ t + 
+        c\ s\ t\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\((x /. equs3)\) - \((x /. sol2)\)\  // Simplify\)], "Input"],
+
+Cell[BoxData[
+    \({0}\)], "Output"],
+
+Cell[BoxData[
+    \(0\)], "Output",
+  GeneratedCell->False,
+  CellAutoOverwrite->False]
+}, Open  ]],
+
+Cell["\<\
+La diferencia de altura dio cero asi que la expresi\[OAcute]n intuida es \
+correcta.
+
+Lo siguiente fue usado para calcular los valores para el unit test Funci\
+\[OAcute]nMultidimensionalTest\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(equs3\  /. \ {b \[Rule] \(-1\), a \[Rule] 1, c \[Rule] 0, \ 
+          d \[Rule] 2, \ t \[Rule] 0.7, s \[Rule] 0.2}\  // \ 
+      Simplify\)], "Input"],
+
+Cell[BoxData[
+    \(x \[Rule] 0.43999999999999995`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1920}, {0, 1023}},
+WindowSize->{1151, 740},
+WindowMargins->{{Automatic, 291}, {Automatic, 108}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 1609, 43, 166, "Text"],
+Cell[3366, 96, 85, 2, 33, "Text"],
+
+Cell[CellGroupData[{
+Cell[3476, 102, 193, 4, 50, "Input"],
+Cell[3672, 108, 156, 3, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3865, 116, 79, 1, 30, "Input"],
+Cell[3947, 119, 207, 3, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4191, 127, 157, 3, 30, "Input"],
+Cell[4351, 132, 139, 2, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4527, 139, 79, 1, 30, "Input"],
+Cell[4609, 142, 201, 3, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4847, 150, 92, 1, 30, "Input"],
+Cell[4942, 153, 37, 1, 29, "Output"]
+}, Open  ]],
+Cell[4994, 157, 510, 9, 90, "Text"],
+
+Cell[CellGroupData[{
+Cell[5529, 170, 155, 4, 30, "Input"],
+Cell[5687, 176, 137, 3, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5861, 184, 81, 1, 30, "Input"],
+Cell[5945, 187, 37, 1, 29, "Output"],
+Cell[5985, 190, 87, 3, 29, "Output"]
+}, Open  ]],
+Cell[6087, 196, 214, 6, 71, "Text"],
+
+Cell[CellGroupData[{
+Cell[6326, 206, 171, 3, 30, "Input"],
+Cell[6500, 211, 64, 1, 29, "Output"]
+}, Open  ]],
+Cell[6579, 215, 26, 0, 30, "Input"]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
