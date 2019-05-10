@@ -1,46 +1,40 @@
 package stockTrading
 
 /**
- * Created by Gustavo on 30/11/2014.
- */
+  * Created by Gustavo on 30/11/2014.
+  */
 object Presentador {
 
-	def mostrarPerformanceRelativaEnFunciónDe_BuyTs_Y_SellTs(análisis: Analizador.Resultado): Unit = {
+	def mostrarPerformanceRelativa(análisis: Analizador.Resultado, ctorIteradorÍndiceX: () => Iterator[Int], ctorIteradorÍndiceY: () => Iterator[Int]): Unit = {
 		var menor = Double.MaxValue
 		var mayor = Double.MinValue
 
-		val cuadro = (for ((fila, outerIndex) <- análisis.iterator.zipWithIndex) yield {
-			val buyTs = Analizador.buyTs(outerIndex)
-			for ((dineroFinal, innerIndex) <- fila.iterator.zipWithIndex) yield {
-				val sellTs = Analizador.sellTs(innerIndex)
-				if (buyTs <= sellTs) {
-					if (dineroFinal < menor) menor = dineroFinal
-					if (dineroFinal > mayor) mayor = dineroFinal
-					dineroFinal
-				} else
-					dineroFinal
+		for (fila <- análisis) {
+			for (dineroFinal <- fila) {
+				if (dineroFinal < menor) menor = dineroFinal
+				if (dineroFinal > mayor) mayor = dineroFinal
 			}
-
-		} toIndexedSeq) toIndexedSeq
+		}
 
 		println(s"mayor=$mayor, menor=$menor")
 		print("      ")
-		for (sellTs <- Analizador.sellTsIterator) print(sellTs / 100)
+		for (sellTs <- ctorIteradorÍndiceX()) print((sellTs / 1000) % 10)
 		println()
 		print("      ")
-		for (sellTs <- Analizador.sellTsIterator) print((sellTs / 10) % 10)
+		for (sellTs <- ctorIteradorÍndiceX()) print((sellTs / 100) % 10)
 		println()
 		print("      ")
-		for (sellTs <- Analizador.sellTsIterator) print(sellTs % 10)
+		for (sellTs <- ctorIteradorÍndiceX()) print((sellTs / 10) % 10)
+		println()
+		print("      ")
+		for (sellTs <- ctorIteradorÍndiceX()) print(sellTs % 10)
 		println()
 		println()
-		for ((fila, outerIndex) <- cuadro.iterator.zipWithIndex) {
-			print("%3d ~ " format Analizador.buyTs(outerIndex))
-			for ((dineroFinal, innerIndex) <- fila.iterator.zipWithIndex) {
-				//				if (Analizador.buyTs(outerIndex) <= Analizador.sellTs(innerIndex))
+		val iteradorÍndiceY = ctorIteradorÍndiceY();
+		for (fila <- análisis) {
+			print("%3d ~ " format iteradorÍndiceY.next)
+			for (dineroFinal <- fila) {
 				print(rango(dineroFinal, menor, mayor))
-				//				else
-				//					print(' ')
 			}
 			println()
 		};
@@ -56,6 +50,7 @@ object Presentador {
 		println(s"x=$x")
 
 	}
+
 
 	private def rango(x: Double, menor: Double, mayor: Double): Char = {
 		if (x == mayor) 'M'
